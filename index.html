@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>เค้ากับเธอ 1 เดือน</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Itim&family=Mali:wght@300;400;600&display=swap">
+<style>
+:root{
+  --blush:#fff4f6;
+  --paper:#fffdfb;
+  --rose:#f2a7b8;
+  --rose-deep:#d9668a;
+  --ink:#5b3a47;
+  --muted:#9a7884;
+  --cream:#fde9d9;
+  --display:"Itim","Mali",system-ui,sans-serif;
+  --body:"Mali",system-ui,sans-serif;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--blush);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.8;padding-inline:16px;padding-block:32px 64px;
+  background-image:radial-gradient(var(--cream) 1.2px,transparent 1.4px);background-size:22px 22px}
+main{max-width:620px;margin:0 auto;display:flex;flex-direction:column;gap:40px}
+h1,h2{font-family:var(--display);font-weight:400;text-wrap:balance;margin:0}
+
+.hero{text-align:center;display:flex;flex-direction:column;align-items:center;gap:8px;padding-top:8px}
+.mascots{width:min(260px,80%);height:auto}
+.mascots .bob{animation:bob 3.2s ease-in-out infinite;transform-origin:center bottom}
+.mascots .bob2{animation-delay:-1.6s}
+@keyframes bob{50%{transform:translateY(-4px)}}
+.eyebrow{font-size:14px;letter-spacing:.12em;color:var(--muted);text-transform:uppercase}
+h1{font-size:clamp(2.2rem,8vw,3.4rem);line-height:1.2;color:var(--rose-deep)}
+.sub{color:var(--muted);margin:0}
+
+.counter{display:flex;justify-content:center;gap:12px;flex-wrap:wrap}
+.tile{background:var(--paper);border:1.5px dashed var(--rose);border-radius:18px;padding:12px 18px;min-width:96px;text-align:center}
+.tile b{display:block;font-family:var(--display);font-weight:400;font-size:2rem;line-height:1.1;color:var(--rose-deep);font-variant-numeric:tabular-nums}
+.tile span{font-size:13px;color:var(--muted)}
+
+.photos h2,.letter h2{font-size:1.5rem;text-align:center;margin-bottom:6px}
+.hint{text-align:center;font-size:13px;color:var(--muted);margin:0 0 16px}
+.strip{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.polaroid{margin:0;background:#fff;padding:8px 8px 10px;box-shadow:0 6px 18px rgba(217,102,138,.14);border-radius:4px;position:relative;transition:transform .25s}
+.polaroid .ph{aspect-ratio:1/1;max-width:100%;overflow:hidden;border-radius:2px;background:var(--blush)}
+.polaroid:nth-child(1){transform:rotate(-3deg)}
+.polaroid:nth-child(2){transform:rotate(2deg) translateY(6px)}
+.polaroid:nth-child(3){transform:rotate(-1deg)}
+.polaroid:hover{transform:rotate(0) scale(1.03)}
+.polaroid img{width:100%;height:100%;object-fit:cover;display:block}
+.polaroid .cap{margin-top:6px;text-align:center;font-family:var(--display);font-size:13px;line-height:1.35;color:var(--muted);text-wrap:balance}
+@media (max-width:420px){.strip{gap:10px}.polaroid{padding:6px 6px 8px}.polaroid .cap{font-size:12px}}
+
+.letter article{background:var(--paper);border-radius:22px;padding:32px clamp(20px,6vw,40px);position:relative;
+  box-shadow:0 10px 30px rgba(217,102,138,.10);
+  background-image:repeating-linear-gradient(transparent 0 33px,#f7dfe6 33px 34px);background-position:0 18px}
+.letter article::before{content:"";position:absolute;top:-12px;left:50%;width:90px;height:24px;transform:translateX(-50%) rotate(-2deg);background:rgba(242,167,184,.55);border-radius:3px}
+.letter p{margin:0 0 1em;max-width:60ch}
+.letter .open{font-family:var(--display);font-size:1.25rem;color:var(--rose-deep)}
+.letter .sign{text-align:right;font-family:var(--display);font-size:1.3rem;color:var(--rose-deep);margin:1.2em 0 0}
+
+.love{display:flex;flex-direction:column;align-items:center;gap:10px}
+.love button{font-family:var(--display);font-size:1.1rem;color:#fff;background:var(--rose-deep);border:0;border-radius:999px;padding:10px 26px;cursor:pointer;box-shadow:0 6px 16px rgba(217,102,138,.3);transition:transform .15s}
+.love button:hover{transform:translateY(-2px)}
+.love button:focus-visible{outline:3px solid var(--rose);outline-offset:3px}
+.love small{color:var(--muted);font-variant-numeric:tabular-nums}
+.heart{position:fixed;pointer-events:none;color:var(--rose-deep);font-size:22px;animation:float 1.6s ease-out forwards}
+@keyframes float{to{transform:translateY(-140px) scale(1.4);opacity:0}}
+footer{text-align:center;font-size:13px;color:var(--muted)}
+@media (prefers-reduced-motion:reduce){.mascots .bob{animation:none}.heart{animation-duration:.01s}.polaroid{transition:none}}
+</style>
+</head>
+<body>
+<main>
+  <section class="hero">
+    <svg class="mascots" viewBox="0 0 260 150" role="img" aria-label="กระต่ายกับหมีกอดหัวใจ">
+      <g class="bob">
+        <ellipse cx="72" cy="30" rx="11" ry="30" fill="#fff" stroke="#e7b9c6" stroke-width="2"/>
+        <ellipse cx="72" cy="32" rx="5" ry="20" fill="#fbd3dd"/>
+        <ellipse cx="100" cy="28" rx="11" ry="30" fill="#fff" stroke="#e7b9c6" stroke-width="2" transform="rotate(12 100 28)"/>
+        <ellipse cx="101" cy="30" rx="5" ry="20" fill="#fbd3dd" transform="rotate(12 101 30)"/>
+        <ellipse cx="86" cy="98" rx="46" ry="44" fill="#fff" stroke="#e7b9c6" stroke-width="2"/>
+        <circle cx="72" cy="94" r="4" fill="#5b3a47"/><circle cx="100" cy="94" r="4" fill="#5b3a47"/>
+        <ellipse cx="62" cy="106" rx="7" ry="4" fill="#fbc4d2"/><ellipse cx="110" cy="106" rx="7" ry="4" fill="#fbc4d2"/>
+        <path d="M82 104 q4 4 8 0" stroke="#5b3a47" stroke-width="2" fill="none" stroke-linecap="round"/>
+        <circle cx="64" cy="64" r="7" fill="#f2a7b8"/><circle cx="56" cy="60" r="5" fill="#f2a7b8"/><circle cx="58" cy="70" r="5" fill="#f2a7b8"/>
+      </g>
+      <g class="bob bob2">
+        <circle cx="152" cy="62" r="13" fill="#e9c9a8" stroke="#d3a983" stroke-width="2"/>
+        <circle cx="206" cy="62" r="13" fill="#e9c9a8" stroke="#d3a983" stroke-width="2"/>
+        <circle cx="152" cy="62" r="6" fill="#f6dcc4"/><circle cx="206" cy="62" r="6" fill="#f6dcc4"/>
+        <ellipse cx="179" cy="100" rx="44" ry="42" fill="#e9c9a8" stroke="#d3a983" stroke-width="2"/>
+        <ellipse cx="179" cy="110" rx="17" ry="13" fill="#f6dcc4"/>
+        <circle cx="165" cy="94" r="4" fill="#5b3a47"/><circle cx="193" cy="94" r="4" fill="#5b3a47"/>
+        <ellipse cx="179" cy="106" rx="4" ry="3" fill="#5b3a47"/>
+        <path d="M175 113 q4 4 8 0" stroke="#5b3a47" stroke-width="2" fill="none" stroke-linecap="round"/>
+        <ellipse cx="152" cy="108" rx="6" ry="3.5" fill="#f5b3c2"/><ellipse cx="206" cy="108" rx="6" ry="3.5" fill="#f5b3c2"/>
+      </g>
+      <path d="M130 128 c-10-10-22-2-14 10 l14 14 l14-14 c8-12-4-20-14-10z" fill="#d9668a"/>
+    </svg>
+    <div class="eyebrow">14 กันยายน → 14 ตุลาคม</div>
+    <h1>Happy 1 Month</h1>
+    <p class="sub">ของเค้ากับเธอ</p>
+  </section>
+
+  <section class="counter" aria-label="เวลาที่อยู่ด้วยกัน">
+    <div class="tile"><b id="d">30</b><span>วัน</span></div>
+    <div class="tile"><b id="h">720</b><span>ชั่วโมง</span></div>
+    <div class="tile"><b id="m">43,200</b><span>นาที</span></div>
+  </section>
+
+  <section class="photos">
+    <h2>ความทรงจำของเรา</h2>
+    <p class="hint">เดือนแรกของเรา</p>
+    <div class="strip">
+      <figure class="polaroid"><div class="ph"><img src="bunny.png" style="object-position:50% 45%" alt="ตุ๊กตากระต่ายใส่ชุดนอนลายหมี"></div><figcaption class="cap">น้องแรกพบบ</figcaption></figure>
+      <figure class="polaroid"><div class="ph"><img src="cake.png" style="object-position:30% 10%;filter:brightness(1.3)" alt="เค้กเขียนว่า เค้ารักเธอ"></div><figcaption class="cap">เค้กที่อร่อยที่สุดโลก</figcaption></figure>
+      <figure class="polaroid"><div class="ph"><img src="photo3.png" alt="ภาพมือสองคนจับกันบนจอ"></div><figcaption class="cap">รักเธอนะ</figcaption></figure>
+    </div>
+  </section>
+
+  <section class="letter">
+    <h2>จดหมายถึงเธอ</h2>
+    <p class="hint">จากเค้า</p>
+    <article>
+      <p class="open">ถึงเธอ,</p>
+      <p>วันแรกที่เจอเธอ เค้าแปลกใจมาก แล้วก็ไม่เข้าใจเลยว่าผู้หญิงคนนี้เป็นอะไร ทำไมถึงดูเข้าหาเค้า ทั้ง ๆ ที่เค้าก็ไม่ได้ทำอะไรที่น่าจะทำให้เธอชอบเลย</p>
+      <p>เค้ายังแอบคิดอยู่ว่า หรือจริง ๆ แล้วเธอก็ทำแบบนี้กับทุกคนนะ เค้าเองก็ไม่แน่ใจ</p>
+      <p>แต่สุดท้าย เค้าก็ดันไปรักเธอเข้า จนตอนนี้ไม่สามารถรักใครได้อีกแล้ว นอกจากเธอคนเดียว</p>
+      <p>Happy anniversary นะคะ เค้าดีใจมาก ๆ เลยนะ ที่ได้พบเธอ</p>
+      <p class="sign">รักเธอนะ — เค้า</p>
+    </article>
+  </section>
+
+  <section class="love">
+    <button type="button" id="loveBtn">ส่งหัวใจให้เค้า ♡</button>
+    <small id="loveCount">แตะเพื่อส่งหัวใจ</small>
+  </section>
+
+  <footer>เดือนแรกของเรา และอีกหลายเดือนต่อจากนี้</footer>
+</main>
+
+<script>
+(function(){
+  var start = new Date("2026-09-14T00:00:00+07:00");
+  function tick(){
+    var ms = Math.max(0, Date.now() - start);
+    var mins = Math.floor(ms/60000);
+    document.getElementById("d").textContent = Math.floor(mins/1440).toLocaleString();
+    document.getElementById("h").textContent = Math.floor(mins/60).toLocaleString();
+    document.getElementById("m").textContent = mins.toLocaleString();
+  }
+  tick(); setInterval(tick, 30000);
+
+  var n = 0, btn = document.getElementById("loveBtn"), cnt = document.getElementById("loveCount");
+  btn.addEventListener("click", function(){
+    n++; cnt.textContent = "ส่งไปแล้ว " + n + " ดวง";
+    var rect = btn.getBoundingClientRect();
+    for (var i=0;i<6;i++){
+      var h = document.createElement("span"); h.className="heart"; h.textContent="♥";
+      h.style.left = (rect.left + rect.width/2 + (Math.random()*120-60)) + "px";
+      h.style.top = (rect.top - 10 + (Math.random()*20-10)) + "px";
+      h.style.animationDelay = (i*80) + "ms";
+      document.body.appendChild(h);
+      setTimeout(function(el){ el.remove(); }, 1900, h);
+    }
+  });
+})();
+</script>
+</body>
+</html>
