@@ -70,9 +70,49 @@ h1{font-size:clamp(2.2rem,8vw,3.4rem);line-height:1.2;color:var(--rose-deep)}
 @keyframes float{to{transform:translateY(-140px) scale(1.4);opacity:0}}
 footer{text-align:center;font-size:13px;color:var(--muted)}
 @media (prefers-reduced-motion:reduce){.mascots .bob{animation:none}.heart{animation-duration:.01s}.polaroid{transition:none}}
+
+/* envelope intro + music */
+.intro{position:fixed;inset:0;z-index:50;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;padding:24px;
+  background:var(--blush);background-image:radial-gradient(var(--cream) 1.2px,transparent 1.4px);background-size:22px 22px;
+  cursor:pointer;border:0;width:100%;font:inherit;color:inherit;transition:opacity .7s ease .5s,visibility 0s linear 1.2s}
+.intro.open{opacity:0;visibility:hidden;pointer-events:none}
+.env{width:min(280px,72vw);height:auto;overflow:visible;animation:wiggle 2.6s ease-in-out infinite}
+.env .flap{transform-origin:140px 70px;transition:transform .6s ease}
+.env .card{transition:transform .7s ease .25s}
+.intro.open .env{animation:none}
+.intro.open .env .flap{transform:scaleY(-1)}
+.intro.open .env .card{transform:translateY(-70px)}
+@keyframes wiggle{0%,100%{transform:rotate(0)}45%{transform:rotate(-2deg)}55%{transform:rotate(2deg)}}
+.intro h2{font-size:1.6rem;color:var(--rose-deep)}
+.intro p{margin:0;color:var(--muted);font-size:15px;animation:pulse 1.8s ease-in-out infinite}
+@keyframes pulse{50%{opacity:.45}}
+.intro:focus-visible{outline:3px solid var(--rose);outline-offset:-8px}
+.music{position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:40;width:48px;height:48px;border-radius:50%;
+  border:1.5px dashed var(--rose);background:var(--paper);color:var(--rose-deep);font-size:20px;cursor:pointer;
+  box-shadow:0 6px 16px rgba(217,102,138,.2);display:flex;align-items:center;justify-content:center}
+.music.playing{animation:spin 6s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.music:focus-visible{outline:3px solid var(--rose);outline-offset:3px}
+body.locked{overflow:hidden}
+@media (prefers-reduced-motion:reduce){.env,.intro p,.music.playing{animation:none}.env .flap,.env .card,.intro{transition-duration:.01s;transition-delay:0s}}
 </style>
 </head>
-<body>
+<body class="locked">
+<button type="button" class="intro" id="intro" aria-label="เปิดจดหมายและเปิดเพลง">
+  <svg class="env" viewBox="0 0 280 190" aria-hidden="true">
+    <g class="card"><rect x="40" y="40" width="200" height="120" rx="8" fill="#fffdfb" stroke="#f2a7b8" stroke-width="2"/>
+      <text x="140" y="95" text-anchor="middle" font-family="Itim, sans-serif" font-size="20" fill="#d9668a">Happy 1 Month</text>
+      <text x="140" y="122" text-anchor="middle" font-family="Mali, sans-serif" font-size="13" fill="#9a7884">ถึงเธอ ♡</text></g>
+    <path d="M20 70 L140 140 L260 70 L260 180 L20 180 Z" fill="#fbd3dd" stroke="#e7a3b6" stroke-width="2" stroke-linejoin="round"/>
+    <path d="M20 180 L120 118 M260 180 L160 118" stroke="#e7a3b6" stroke-width="2"/>
+    <path class="flap" d="M20 70 L140 140 L260 70 Z" fill="#f7bccb" stroke="#e7a3b6" stroke-width="2" stroke-linejoin="round"/>
+    <path d="M140 132 c-7-7-16-1-10 7 l10 10 l10-10 c6-8-3-14-10-7z" fill="#d9668a"/>
+  </svg>
+  <h2>มีจดหมายถึงเธอ</h2>
+  <p>แตะเพื่อเปิดนะ ♡</p>
+</button>
+<audio id="song" src="song.mp3" loop preload="auto"></audio>
+<button type="button" class="music" id="musicBtn" aria-label="หยุดเพลง" hidden>♫</button>
 <main>
   <section class="hero">
     <svg class="mascots" viewBox="0 0 260 150" role="img" aria-label="กระต่ายกับหมีกอดหัวใจ">
@@ -153,6 +193,19 @@ footer{text-align:center;font-size:13px;color:var(--muted)}
     document.getElementById("m").textContent = mins.toLocaleString();
   }
   tick(); setInterval(tick, 30000);
+
+  var song = document.getElementById("song"), intro = document.getElementById("intro"), mb = document.getElementById("musicBtn");
+  song.volume = 0.6;
+  function sync(){ var on = !song.paused; mb.classList.toggle("playing", on); mb.textContent = on ? "♫" : "♪"; mb.setAttribute("aria-label", on ? "หยุดเพลง" : "เล่นเพลง"); }
+  song.addEventListener("play", sync); song.addEventListener("pause", sync);
+  var p = song.play(); if (p && p.catch) p.catch(function(){});
+  intro.addEventListener("click", function(){
+    var q = song.play(); if (q && q.catch) q.catch(function(){});
+    intro.classList.add("open"); document.body.classList.remove("locked");
+    mb.hidden = false;
+    setTimeout(function(){ intro.hidden = true; }, 1300);
+  });
+  mb.addEventListener("click", function(){ if (song.paused) { song.play(); } else { song.pause(); } });
 
   var n = 0, btn = document.getElementById("loveBtn"), cnt = document.getElementById("loveCount");
   btn.addEventListener("click", function(){
